@@ -8,7 +8,7 @@
 ## Enable messages about what your character hears. Boolean option, defaults to
 ## TRUE.
 
-# OPTIONS=acoustics
+OPTIONS=acoustics
 
 
 ## Your starting alignment. Compound option, with possible values of lawful,
@@ -23,38 +23,39 @@
 ## on the map. The whatis_coord option controls whether the description
 ## includes map coordinates. It can be toggled by typing # while targeting.
 
-# OPTIONS=autodescribe
+OPTIONS=!autodescribe
 
 
 ## Automatically dig, if you're wielding a digging tool and moving into a place
 ## that can be dug. Boolean option, defaults to FALSE. Can be set in-game.
 ## Persistent.
 
-# OPTIONS=autodig
+OPTIONS=!autodig
 
 
 ## Walking into a door attempts to open it. Boolean option, defaults to TRUE.
 ## Persistent.
 
-# OPTIONS=autoopen
+OPTIONS=autoopen
 
 
 ## Automatically pick up things onto which you move. See also pickup_types,
 ## pickup_burden, pickup_thrown, and Autopickup_exceptions. Boolean option,
 ## defaults to TRUE. Can be set in-game.
 
-# OPTIONS=autopickup
+OPTIONS=!autopickup
 
 
 ## Autopickup exceptions allow you to specify particular expression matches for
 ## more nuanced autopickup usage. See the main article for usage information.
 
-# OPTIONS=AUTOPICKUP_EXCEPTION
+# AUTOPICKUP_EXCEPTION=">chest"
+
 
 ## Automatically quiver some suitable weapon if your quiver empties when
 ## firing. Boolean option, defaults to FALSE. Can be set in-game. Persistent.
 
-# OPTIONS=autoquiver
+OPTIONS=!autoquiver
 
 
 ## Change the key bindings of special keys, menu accelerators, or extended
@@ -68,41 +69,25 @@
 ## Start the character permanently blind. Boolean option, defaults to FALSE.
 ## Persistent.
 
-# OPTIONS=blind
+OPTIONS=!blind
 
 
 ## Allow saving and loading bones files. Boolean option, defaults to TRUE.
 ## Persistent.
 
-# OPTIONS=bones
-
-
-## Set the symbol used to display boulders.
-##
-## Compound option with default value of `. Can be set in-game. Can also be
-## defined using ASCII value, and without the OPTIONS prefix simply as
-##
-##   BOULDER=48
-##
-## For example, BOULDER=64 would be equal to OPTIONS=boulder:@. See also Custom
-## map symbols.
-##
-## This option has been superseded by the SYMBOLS= format described in the
-## symset option, though this method still functions.
-
-# OPTIONS=boulder:0
+OPTIONS=bones
 
 
 ## Set the name of your starting cat. Compound option, and it cannot be set
 ## within game. See also dogname and horsename. Example:
 
-# OPTIONS=catname:Whiskers
+OPTIONS=catname:Fluffles
 
 
 ## Save game state after each level change, for possible recovery after program
 ## crash. Boolean option, defaults to TRUE. Can be set in-game.
 
-# OPTIONS=checkpoint
+OPTIONS=checkpoint
 
 
 ## Check free disk space before writing files to disk. You may have to turn
@@ -110,7 +95,7 @@
 ## your save and level files. A boolean option, defaults to on. Only applies
 ## when MFLOPPY was defined during compilation.
 
-# OPTIONS=checkspace
+OPTIONS=!checkspace
 
 
 ## Choose at random one of the comma-separated parameters as an active section
@@ -127,25 +112,25 @@
 ## Allows looking at things on the screen by navigating the mouse over them and
 ## clicking the right mouse button. Boolean option, defaults to FALSE.
 
-# OPTIONS=clicklook
+OPTIONS=!clicklook
 
 
 ## NetHack provides some additional command assistance when it detects some
 ## anticipated mistakes. Boolean option, defaults to TRUE. Can be set in-game.
 
-# OPTIONS=cmdassist
+OPTIONS=!cmdassist
 
 
 ## Have user confirm attacks on peaceful creatures. Boolean option, defaults to
 ## TRUE. Can be set in-game. Persistent.
 
-# OPTIONS=confirm
+OPTIONS=confirm
 
 
 ## Show out-of-sight areas of lit rooms. Boolean value, defaults to FALSE.
 ## Persistent.
 
-# OPTIONS=dark_room
+OPTIONS=dark_room
 
 
 ## Controls the prompts at the end of the game. Possible values are
@@ -184,13 +169,13 @@
 ## Set the name of your starting dog. Compound option, and it cannot be set
 ## within game. See also catname and horsename. Example:
 
-# OPTIONS=dogname:Cujo
+OPTIONS=dogname:Sir Bork
 
 
 ## Does extended commands interface pop up a menu? Boolean option, defaults to
 ## FALSE. Only implemented for the TTY windowport.
 
-# OPTIONS=extmenu
+OPTIONS=!extmenu
 
 
 ## An object's inventory letter sticks to it when it's dropped, so when you
@@ -198,19 +183,19 @@
 ## already another item in your inventory using that letter. Boolean option,
 ## defaults to TRUE. Can be set in-game. Persistent.
 
-# OPTIONS=fixinv
+OPTIONS=fixinv
 
 
 ## Commands asking for an inventory item will show a menu instead of a text
 ## query with possible menu letters. Default is off.
 
-# OPTIONS=force_invmenu
+OPTIONS=!force_invmenu
 
 
 ## Set the name of the user-defineable fruit. Compound option, takes a string,
 ## with default value of slime mold. Can be set in-game.
 
-# OPTIONS=fruit
+OPTIONS=fruit:bottle of glue
 
 
 ## Sets the gender of your character. A compound option, with possible values
@@ -224,34 +209,34 @@
 ## specifices whether to include gold as X (unknown state) when on, and U
 ## (uncursed) when off. Default is off.
 
-# OPTIONS=goldX
+OPTIONS=!goldX
 
 
 ## If more information is available for an object looked at with the what is
 ## (/) command, ask if you want to see it. Boolean option, defaults to TRUE.
 ## Can be set in-game. Persistent.
 
-# OPTIONS=help
+OPTIONS=help
 
 
 ## When using a windowport that supports mouse and clicking on yourself or next
 ## to you, show a menu of possible actions for the location. Same as
 ## herecmdmenu and therecmdmenu commands.
 
-# OPTIONS=herecmd_menu
+OPTIONS=herecmd_menu
 
 
 ## Visually distinguish pets from similar animals (This includes both your
 ## starting pet and any monsters you happen to tame along the way). Boolean
 ## option, defaults to FALSE. Can be set in-game.
 
-# OPTIONS=hilite_pet
+OPTIONS=hilite_pet
 
 
 ## Visually distinguish piles of objects from individual objects. Boolean
 ## option, defaults to FALSE.
 
-# OPTIONS=hilite_pile
+OPTIONS=hilite_pile
 
 
 ## If the statushilites option is set, this option allows you to customize your
@@ -267,66 +252,103 @@
 ##
 ## The whole feature can be disabled by turning the statushilites option off.
 
-# OPTIONS=hilite_status
+OPTIONS=statushilites
+
+# Always show gold as the proper color.
+OPTIONS=hilite_status:gold/always/yellow
+
+# Show when XL changes.
+OPTIONS=hilite_status:experience-level/changed/white/cyan
+
+# Specify multiple cutoffs for all ability scores.
+OPTIONS=hilite_status:characteristics/<5/red
+OPTIONS=hilite_status:characteristics/>6/orange
+OPTIONS=hilite_status:characteristics/>8/brown
+OPTIONS=hilite_status:characteristics/>11/yellow
+OPTIONS=hilite_status:characteristics/>13/green
+OPTIONS=hilite_status:characteristics/>16/cyan
+OPTIONS=hilite_status:characteristics/>18/lightblue
+
+# Hilight multiple encumbrance statuses.
+OPTIONS=hilite_status:carrying-capacity/burdened/yellow/stressed/orange
+
+# Percentage cutoffs for hitpoints.
+OPTIONS=hilite_status:hitpoints/100%/brightgreen
+OPTIONS=hilite_status:hitpoints/<100%/green
+OPTIONS=hilite_status:hitpoints/<60%/yellow
+OPTIONS=hilite_status:hitpoints/<40%/red
+
+# Highlight hunger level.
+OPTIONS=hilite_status:hunger/satiated/green
+OPTIONS=hilite_status:hunger/hungry/yellow
+OPTIONS=hilite_status:hunger/weak/red
+OPTIONS=hilite_status:hunger/fainting/red&inverse
 
 
 ## Show a hit point bar graph behind your name and title. Only available for
 ## TTY and Windows GUI, and only when statushilites is on.
 
-# OPTIONS=hitpointbar
+OPTIONS=hitpointbar
 
 
 ## Set the name of your starting horse. Compound option, and it cannot be set
 ## within game. See also catname and dogname.
 
-# OPTIONS=horsename
+OPTIONS=horsename:Horsethrup
 
 
 ## Ignore interrupt signals, including breaks. Boolean option, defaults to
 ## FALSE. Not implemented on Mac. Can be set in-game. Persistent.
 
-# OPTIONS=ignintr
+OPTIONS=ignintr
 
 
 ## Omit "uncursed" from inventory lists, if possible. Boolean option, defaults
 ## to TRUE.
 
-# OPTIONS=implicit_uncursed
+OPTIONS=!implicit_uncursed
 
 
 ## Display an introductory message when starting the game. Boolean option,
 ## defaults to TRUE. Cannot be set in-game.
 
-# OPTIONS=legacy
+OPTIONS=!legacy
 
 
 ## Distinguish visually between lit and unlit corridors. Boolean option,
 ## defaults to FALSE. Can be set in-game. Persistent.
 
-# OPTIONS=lit_corridor
+OPTIONS=lit_corridor
 
 
 ## Use the old a, b and c keyboard shortcuts in the looting menu. Boolean
 ## option, defaults to FALSE. Can be set in-game. Persistent.
 
-# OPTIONS=lootabc
+OPTIONS=!lootabc
 
 
 ## Enable mail delivery during the game. Boolean option, defaults to TRUE. Only
 ## meaningful if NetHack was compiled with MAIL. Can be set in-game.
 
-# OPTIONS=mail
+OPTIONS=mail
 
 
 ## Give feedback when walking against a wall. Boolean value, defaults to FALSE.
 
-# OPTIONS=mention_walls
+OPTIONS=!mention_walls
 
 
 ## Enable coloring menu lines. Boolean value, defaults to FALSE. See main
 ## article for how to set menucolors with particular expression matches.
 
-# OPTIONS=menucolors
+OPTIONS=menucolors
+
+MENUCOLOR=" blessed"=green
+MENUCOLOR=" holy"=green
+MENUCOLOR=" cursed"=red
+MENUCOLOR=" unholy"=red
+MENUCOLOR=" cursed .* (being worn)"=orange&underline
+MENUCOLOR=" uncursed"=yellow
 
 
 ## Controls the interface used when you need to choose various objects (in
@@ -344,102 +366,101 @@
 ##
 ## full - display a menu of object classes, and then a menu of matching objects
 
-# OPTIONS=menustyle
+OPTIONS=menustyle:full
 
 
 ## Menu character accelerator to deselect all items in a menu. Implemented by
 ## the Amiga, Gem, X11 and tty ports. Compound option, with default of '-'.
 ## Cannot be set in-game.
 
-# OPTIONS=menu_deselect_all
+# OPTIONS=menu_deselect_all:-
 
 
 ## Menu character accelerator to deselect all items on this page of a menu.
 ## Implemented by the Amiga, Gem and tty ports. Compound option, with default
 ## of '\'. Cannot be set in-game.
 
-# OPTIONS=menu_deselect_page
+# OPTIONS=menu_deselect_page:\
 
 
 ## Menu character accelerator to jump to the first page of a menu. Implemented
 ## by the Amiga, Gem and tty ports. Compound option, with default of '^'.
 ## Cannot be set in-game.
 
-# OPTIONS=menu_first_page
+# OPTIONS=menu_first_page:^
 
 
 ## Controls how the headings in a menu are highlighted. Compound option, with
 ## possible values of bold, inverse, or underline. Not all ports can actually
 ## display all three types.
 
-# OPTIONS=menu_headings
+OPTIONS=menu_headings:inverse
 
 
 ## Menu character accelerator to toggle the selections in a menu. Implemented
 ## by the Amiga, Gem, X11 and tty ports. Compound option, with default of '@'.
 ## Cannot be set in-game.
 
-# OPTIONS=menu_invert_all
+# OPTIONS=menu_invert_all:@
 
 
 ## Menu character accelerator to toggle the selection on this page of a menu.
 ## Implemented by the Amiga, Gem and tty ports. Compound option, with default
 ## of '~'. Cannot be set in-game.
 
-# OPTIONS=menu_invert_page
+# OPTIONS=menu_invert_page:~
 
 
 ## Menu character accelerator to jump to the last page of a menu. Implemented
 ## by the Amiga, Gem and tty ports. Compound option, with default of '|'.
 ## Cannot be set in-game.
 
-# OPTIONS=menu_last_page
+# OPTIONS=menu_last_page:|
 
 
 ## Menu character accelerator to goto the next page of a menu. Implemented by
 ## the Amiga, Gem and tty ports. Compound option, with default of '>'. Cannot
 ## be set in-game.
 
-# OPTIONS=menu_next_page
+# OPTIONS=menu_next_page:>
 
 
 ## Show object symbols in menu headings in menus where the object symbols act
 ## as menu accelerators. Boolean option, defaults to FALSE.
 
-# OPTIONS=menu_objsyms
+OPTIONS=menu_objsyms
 
 
 ## Menu character accelerator to goto the previous page of a menu. Implemented
 ## by the Amiga, Gem and tty ports. Compound option, with default of '<'.
 ## Cannot be set in-game.
 
-# OPTIONS=menu_previous_page
+# OPTIONS=menu_previous_page:<
 
 
 ## Menu character accelerator to search for a menu item. Implemented by the
 ## Amiga, Gem and X11 ports. Compound option, with default of ':'. Cannot be
 ## set in-game.
 
-# OPTIONS=menu_search
+# OPTIONS=menu_search::
 
 
 ## Menu character accelerator to select all items in a menu. Implemented by the
 ## Amiga, Gem, X11 and tty ports. Compound option, with default of '.'. Cannot
 ## be set in-game.
 
-# OPTIONS=menu_select_all
+# OPTIONS=menu_select_all:.
 
 
 ## Menu character accelerator to select all items on this page of a menu.
 ## Implemented by the Amiga, Gem and tty ports. Compound option, with default
 ## of ','. Cannot be set in-game.
 
-# OPTIONS=menu_select_page
+# OPTIONS=menu_select_page:,
 
 
 ## Use tabs to separate menu names from their values. This option is only shown
-## when in wizard-mode, and is only meant for testing purposes. (FIXME: move to
-## wizmode section?)
+## when in wizard-mode, and is only meant for testing purposes.
 
 # OPTIONS=menu_tab_sep
 
@@ -449,7 +470,7 @@
 ## port; For the TTY, X11 and Gem ports the minimum is 20 and maximum 60. On
 ## NAO, the maximum for TTY is 400. Cannot be set in-game.
 
-# OPTIONS=msghistory
+OPTIONS=msghistory:20
 
 
 ## How to show the latest messages recalled with ^P. Compound option, with the
@@ -470,13 +491,17 @@
 ##
 ## Can be set in-game only if playing the TTY windowport.
 
-# OPTIONS=msg_window
+OPTIONS=msg_window:reversed
 
 
 ## Can be used to hide obnoxious messages or emphasize dangerous ones. See main
 ## article for how to use MSGTYPEs.
 
-# OPTIONS=MSGTYPE
+MSGTYPE=hide "You swap places with *"
+# delayed instadeaths. always prompt for -more-
+MSGTYPE=stop "You are slowing down."
+MSGTYPE=stop "You find it hard to breathe."
+MSGTYPE=stop "You are turning a little *"
 
 
 ## The name of your character. Compound option, defaults to your user name. If
@@ -487,25 +512,25 @@
 ##
 ## Cannot be set in-game.
 
-# OPTIONS=name:Eliza
+OPTIONS=name:Eliza
 
 
 ## Read the NetHack news file at start of game, if present. Boolean option,
 ## defaults to TRUE.
 
-# OPTIONS=news
+OPTIONS=!news
 
 
 ## Start the character with no armor. Boolean option, defaults to FALSE.
 ## Persistent.
 
-# OPTIONS=nudist
+OPTIONS=!nudist
 
 
 ## Send padding NULLs to terminal. A boolean, defaults to FALSE. Only used if
 ## you compiled NetHack with TERMCAP and without TIMED_DELAY. Persistent.
 
-# OPTIONS=null
+OPTIONS=!null
 
 
 ## Use the number keys to move instead of hjklyubn. Valid options are:
@@ -530,7 +555,7 @@
 ## For backwards compatibility, number_pad without a value is synonymous to
 ## number_pad:1.
 
-# OPTIONS=number_pad:0
+OPTIONS=number_pad:0
 
 
 ## Sets the order of item classes shown in inventory. Compound option, takes a
@@ -576,19 +601,19 @@
 ## without setting any of the other choices, use paranoid_confirmation:none. To
 ## keep it enabled while setting any of the others, include it in the list:
 
-# OPTIONS=paranoid_confirmation:attack pray Remove
+OPTIONS=paranoid_confirmation:all
 
 
 ## Show permanent inventory window. Boolean option, defaults to FALSE. Not used
 ## on TTY. Can be set in-game. Persistent.
 
-# OPTIONS=perm_invent
+OPTIONS=!perm_invent
 
 
 ## Sets your preferred pet type. A compound option, with possible value of cat,
 ## dog or none. Cannot be set in-game.
 
-# OPTIONS=pettype
+# OPTIONS=pettype:none
 
 
 ## Prompt for confirmation before picking up items that will push the
@@ -597,7 +622,7 @@
 ## player if he is about to pick up a loadstone or gold. Defaults to S.
 ## Persistent.
 
-# OPTIONS=pickup_burden
+OPTIONS=pickup_burden:S
 
 
 ## If this option is on and autopickup is also on, try to pick up things that
@@ -621,7 +646,7 @@
 ## objects" since the pile size will always be at least that big; default value
 ## is 5. Persistent.
 
-# OPTIONS=pile_limit
+OPTIONS=pile_limit:5
 
 
 ## Values are normal, explore, or debug. Allows selection of explore mode (also
@@ -639,7 +664,7 @@
 ## weapon is pushed into the alternate weapon slot. Boolean option, defaults to
 ## FALSE. Can be set in-game. Persistent.
 
-# OPTIONS=pushweapon
+OPTIONS=!pushweapon
 
 
 ## Set your character's race. A compound option, with possible values of human,
@@ -655,7 +680,7 @@
 ##
 ## Boolean option, defaults to FALSE. Can be set in-game. Persistent.
 
-# OPTIONS=rest_on_space
+OPTIONS=!rest_on_space
 
 
 ## Set your character's role. Can also be random. A compound option. See name
@@ -672,7 +697,7 @@
 ## the symbols file to alter the symbols displayed on the screen on the rogue
 ## level.
 
-# OPTIONS=roguesymset
+OPTIONS=roguesymset:RogueIBM
 
 
 ## When writing out a save file, perform a run length compression of the map.
@@ -694,7 +719,7 @@
 ##
 ## crawl - like walk, but pause briefly after each step
 
-# OPTIONS=runmode
+OPTIONS=runmode:walk
 
 
 ## Prevents you from (knowingly) attacking your pet by moving into it. TRUE is
@@ -702,7 +727,7 @@
 ## accomplished using the fight command. Boolean option, defaults to TRUE. Can
 ## be set in-game.
 
-# OPTIONS=safe_pet
+OPTIONS=safe_pet
 
 
 ## This option turns on debugging output, and is only available in wizard mode.
@@ -731,7 +756,7 @@
 ##
 ## Boolean option, defaults to FALSE. Can be set in-game. Persistent.
 
-# OPTIONS=showexp
+OPTIONS=showexp
 
 
 ## Uses the symbol for your race instead of @. That's h for o for orcs and G
@@ -752,7 +777,7 @@
 ## Stops your terminal's bell sounding. Boolean option, defaults to TRUE. Can
 ## be set in-game. Persistent.
 
-# OPTIONS=silent
+OPTIONS=silent
 
 
 ## Controls the sorting behavior of the pickup lists for inventory and #loot
@@ -760,24 +785,25 @@
 ##
 ## full - always sort the lists
 ##
-## loot - only sort the lists that don't use inventory leters, like with the
+## loot - only sort the lists that don't use inventory letters, like with the
 ## #loot and pickup commands
 ##
 ## none - show lists the traditional way without sorting
 
-# OPTIONS=sortloot
+OPTIONS=sortloot:none
 
 
 ## Groups similar kinds of objects in your inventory. TRUE is highly
 ## recommended. Boolean option, defaults to TRUE. Can be set in-game.
 ## Persistent.
 
-# OPTIONS=sortpack
+OPTIONS=sortpack
 
 
 ## Allows user-defined sound file to be played when a message is shown.
 
-# OPTIONS=SOUND
+# SOUNDDIR=/home/foo
+# SOUND=MESG "regular expression pattern" "filename" volume
 
 
 ## Display sparkly effect for resisted magical attacks (e.g. a fire attack on a
@@ -787,19 +813,19 @@
 ##
 ## Boolean option, defaults to TRUE. Can be set in-game. Persistent.
 
-# OPTIONS=sparkle
+OPTIONS=sparkle
 
 
 ## Uses standout mode (reverse video) for displaying "--More--". Boolean
 ## option, defaults to FALSE. Can be set in-game. Persistent.
 
-# OPTIONS=standout
+OPTIONS=standout
 
 
 ## Allow updates to the status lines at the bottom of the screen (default
 ## true).
 
-# OPTIONS=status_updates
+OPTIONS=status_updates
 
 
 ## Controls how many turns status hilite behaviors highlight the field. If
@@ -808,15 +834,13 @@
 ## Only useful when you have status hilite rules configured; see the
 ## hilite_status option for more information.
 
-# OPTIONS=statushilites
-
 
 ## Prevent alert notification messages about feature changes in a NetHack
 ## version and the previous versions. Compound option, accepts a string
 ## describing a NetHack version. Can be set in-game. Currently only one use,
 ## which is to prevent the quiver and quit-command changes:
 
-# OPTIONS=suppress_alert:3.6.1
+OPTIONS=suppress_alert:3.6.1
 
 
 ## Select the symbols used to display the game. Replaces the DECgraphics,
@@ -842,14 +866,18 @@
 ##
 ## For a complete list of symbol names, please see the symset article.
 
-# OPTIONS=symset
+OPTIONS=symset:IBMgraphics
+
+SYMBOLS=S_boulder:0
+SYMBOLS=S_golem:7
+SYMBOLS=S_ghost:8
 
 
 ## Displays elapsed game time, in turns, on the status line. Very useful for
 ## estimating prayer timeouts, spell lifespan, and more. Boolean option,
 ## defaults to FALSE. Can be set in-game. Persistent.
 
-# OPTIONS=time
+OPTIONS=!time
 
 
 ## On TTY interfaces (unix and VMS), use a timer instead of sending extra
@@ -860,13 +888,13 @@
 ## Boolean option, defaults to TRUE if configured into the program. Can be set
 ## in-game. Persistent.
 
-# OPTIONS=timed_delay
+OPTIONS=timed_delay
 
 
 ## Prints an ASCII tombstone when you die. Boolean option, defaults to TRUE.
 ## Can be set in-game. Persistent.
 
-# OPTIONS=tombstone
+OPTIONS=tombstone
 
 
 ## Prints the top ten high scores in a window rather than stdout. This isn't
@@ -879,14 +907,14 @@
 ## Enables the travel command. Boolean option, defaults to TRUE. Can be set
 ## in-game. Persistent.
 
-# OPTIONS=travel
+OPTIONS=travel
 
 
 ## Chooses whether or not to display certain non-essential messages, such as
 ## doors being destroyed. Boolean option, defaults to TRUE. Can be set in-game.
 ## Persistent.
 
-# OPTIONS=verbose
+OPTIONS=verbose
 
 
 ## When using the / (what is) or ; (far look) commands to look around on the
@@ -966,7 +994,7 @@
 ## Makes your character start with those items in inventory, in addition to the
 ## normal starting items.
 
-# OPTIONS=wizkit
+# WIZKIT=
 
 
 ## When writing out a save file, perform zero-comp compression of the contents.
